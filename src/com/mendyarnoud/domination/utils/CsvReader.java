@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mendyarnoud.domination.objet.Domino;
+import com.mendyarnoud.domination.objet.Tuile;
 
 public class CsvReader {
 
@@ -22,18 +23,22 @@ public class CsvReader {
 			while ((line = br.readLine()) != null) {
 				if (index != 0) {
 					String[] items = line.split(",");
-					Domino domino = new Domino();
-
+					
+					//Creation de la premiere Tuile
 					int crowned1 = Integer.parseInt(items[0]);
-					domino.setCrowned1(crowned1);
 					String type1 = items[1];
-					domino.setType1(type1);
+					Tuile tuile1 = new Tuile(crowned1,type1);
+					
+					//Creation de la deuxieme Tuile
 					int crowned2 = Integer.parseInt(items[2]);
-					domino.setCrowned2(crowned2);
 					String type2 = items[3];
-					domino.setType2(type2);
+					Tuile tuile2 = new Tuile(crowned2,type2);
+					
+					//Recuperation du numero du domino
 					int dominoNumber = Integer.parseInt(items[4]);
-					domino.setDominoNumber(dominoNumber);
+					
+					//Integration des tuiles et du numero pour former un domino
+					Domino domino=new Domino(tuile1,tuile2,dominoNumber);
 					dominos.add(domino);
 				}
 				index++;

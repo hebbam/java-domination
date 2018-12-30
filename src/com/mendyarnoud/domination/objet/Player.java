@@ -7,10 +7,13 @@ public class Player {
 
 	private String name;
 	private List<King> kings = new ArrayList<>();
-	private int[][] PlateauDeJeu= new int[8][8];
+	private Playground playground;
 	
-	public Player(String name) {
+
+	public Player(String name,List<King> kings, Playground playground) {
 		this.name = name;
+		this.kings=kings;
+		this.playground=playground;
 	}
 
 	public String getName() {

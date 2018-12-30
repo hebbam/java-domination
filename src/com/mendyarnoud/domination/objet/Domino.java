@@ -2,55 +2,36 @@ package com.mendyarnoud.domination.objet;
 
 public class Domino implements Comparable<Domino> {
 
-	private int crowned1;
-	private String type1;
-	private int crowned2;
-	private String type2;
+	private Tuile tuile1;
+	private Tuile tuile2;
+	
 	private int number;
-
-	public int getCrowned1() {
-		return crowned1;
+	
+	
+	public Domino(Tuile tuile1,Tuile tuile2,int number ) {
+	this.tuile1=tuile1;
+	this.tuile2=tuile2;
+	this.number = number;
+	}
+	
+	
+	public Tuile getTuile1() {
+		return tuile1;
+	}
+	
+	public Tuile getTuile2() {
+		return tuile2;
 	}
 
-	public void setCrowned1(int crowned1) {
-		this.crowned1 = crowned1;
-	}
-
-	public String getType1() {
-		return type1;
-	}
-
-	public void setType1(String type1) {
-		this.type1 = type1;
-	}
-
-	public int getCrowned2() {
-		return crowned2;
-	}
-
-	public void setCrowned2(int crowned2) {
-		this.crowned2 = crowned2;
-	}
-
-	public String getType2() {
-		return type2;
-	}
-
-	public void setType2(String type2) {
-		this.type2 = type2;
-	}
 
 	public int getDominoNumber() {
 		return number;
 	}
 
-	public void setDominoNumber(int dominoNumber) {
-		this.number = dominoNumber;
-	}
 
 	@Override
 	public String toString() {
-		return "Domino [couronne1=" + crowned1 + ", type1=" + type1 + ", couronne2=" + crowned2 + ", type2=" + type2
+		return "Domino [couronne1=" + tuile1.getCrown() + ", type1=" + tuile1.getType() + ", couronne2=" + tuile2.getCrown() + ", type2=" + tuile2.getType()
 				+ ", number=" + number + "]";
 	}
 

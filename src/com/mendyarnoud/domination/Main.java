@@ -24,7 +24,7 @@ public class Main {
 		Player player4=new Player("Mattiooo");
 		players.add(player1);
 		players.add(player2);
-		players.add(player3);
+		//players.add(player3);
 		//players.add(player4);
 		King king1 = new King("Bleu");
 		King king2 = new King("Bleu");
