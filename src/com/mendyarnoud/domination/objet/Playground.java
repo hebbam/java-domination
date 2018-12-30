@@ -89,6 +89,7 @@ public class Playground {
 	public boolean longueurDuTerrainValid(int posX, int posY, int orientation) {
 		int longueurX=0;
 		int longueurY=0;
+		
 		// Determine la longueur du terrain de jeux en X et Y
 		for(int i=0;i<8;i++) {
 			if(playground[i][posY]!=null)
@@ -114,7 +115,7 @@ public class Playground {
 			return false;
 	}
 	
-	//Test si la tuile d'un domino choisi et de meme type que un present sur le terrain du joueur
+	//Test si la tuile d'un domino et de meme type que une tuile present sur le terrain
 	public boolean isSameType(int posX, int posY, Tuile tuile) {
 		if(!isEmpty(posX,posY)) {
 		if (playground[posX][posY].getType().equals(tuile.getType()))
@@ -125,7 +126,7 @@ public class Playground {
 		return false;
 	}
 	
-	//Test si au moins 1 terrain est adjacent et du meme type que le dominos
+	//Test si au moins une tuile est adjacent et du meme type que le dominos
 	public boolean isAdjacentAndSameType(int posX,int posY, int orientation,Domino domino) {
 		
 		boolean isSameType=false;
@@ -167,6 +168,44 @@ public class Playground {
 		return isSameType;
 	
 }
+	
+	//Place le domino sur le terrain
+	public void PlacerDomino(int posX,int posY,int orientation, Domino domino) {
+		
+		switch (orientation) {
+				
+				case BAS:
+					playground[posX][posY]=domino.getTuile1();
+					playground[posX][posY-1]=domino.getTuile2();
+					
+					break;
+					
+				case HAUT:
+					
+					playground[posX][posY]=domino.getTuile1();
+					playground[posX][posY+1]=domino.getTuile2();
+					
+					break;
+					
+				case DROITE:
+					
+					playground[posX][posY]=domino.getTuile1();
+					playground[posX+1][posY]=domino.getTuile2();
+					
+					break;
+				
+				case GAUCHE:
+					
+					playground[posX][posY]=domino.getTuile1();
+					playground[posX-1][posY]=domino.getTuile2();
+		
+					break;
+					
+				
+		
+			
+				}
+	}
 	
 	
 	
