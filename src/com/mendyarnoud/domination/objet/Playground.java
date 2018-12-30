@@ -41,42 +41,48 @@ public class Playground {
 	}
 	
 	//On test si le domino ne se superpose pas a un autre dans le plateau de jeu en prenant compte de l'ensemble du domino TRUE = AUCUN CHEVAUCHEMENT
-	public boolean AucunChevauchement( Domino domino, int posX, int posY, int orientation) {
+	public boolean AucunChevauchement(int posX, int posY, int orientation) {
 		
+		boolean chevauchement=false;
 		//On test la premiere tuile
 		if(isEmpty(posX,posY)) {
+		// Si la premiere tuile a pas de chevauchement on test la seconde suivant l'orientation
+		switch (orientation) {
+				
+				case BAS:
+					if(isEmpty(posX,posY-1))
+						chevauchement=true;
+					
+					break;
+					
+				case HAUT:
+					if(isEmpty(posX,posY+1))
+						chevauchement=true;
+					
+					break;
+					
+				case DROITE:
+					if(isEmpty(posX+1,posY))
+						chevauchement=true;
+					
+					break;
+				
+				case GAUCHE:
+					if(isEmpty(posX-1,posY))
+						chevauchement=true;
 			
-			// On test la deuxieme tuile suivant l'orientation choisi
-		if(orientation==BAS) {
-			if(isEmpty(posX,posY-1))
-				return true;
-			else
-				return false;
-			
-		}else if(orientation==HAUT) {
-			if(isEmpty(posX,posY+1))
-				return true;
-			else 
-				return false;
-	
-		}else if(orientation==DROITE) {
-			if(isEmpty(posX+1,posY))
-				return true;
-			else
-				return false;
-			
-		}else if(orientation==GAUCHE) {
-			
-			if(isEmpty(posX-1,posY))
-				return true;
-			else
-				return false;
-			
-			}else
-				return false;
-			
-		}else
-		return false;
+				
+					break;
+					
+				
+				
+					
+				}
+		}
+		
+		return chevauchement;
+		
+
 	}
 	
 	//Determine si la longueur du terrain est valide suivant l'orientation (moins ou egale a 5x5)  -- TRUE = PAS DE DEPASSEMENT DE TERRAIN
