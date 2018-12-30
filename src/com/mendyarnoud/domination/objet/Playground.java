@@ -2,7 +2,7 @@ package com.mendyarnoud.domination.objet;
 
 public class Playground {
 	
-	private Tuile[][] playground= new Tuile[8][8];
+	private Tuile[][] playground= new Tuile[9][9];
 	
 	//Orientation
 	private static final int BAS = 0;
@@ -39,6 +39,8 @@ public class Playground {
 		}else
 			return false;
 	}
+	
+	
 	
 	//On test si le domino ne se superpose pas a un autre dans le plateau de jeu en prenant compte de l'ensemble du domino TRUE = AUCUN CHEVAUCHEMENT
 	public boolean AucunChevauchement(int posX, int posY, int orientation) {
@@ -169,6 +171,7 @@ public class Playground {
 	
 }
 	
+	
 	//Verifie toutes les conditions et place le domino sur le terrain (TRUE domino bien placé car toutes les conditions sont vrai)
 	public boolean PlacerDomino(int posX,int posY,int orientation, Domino domino) {
 		boolean dominoPlacer=false;
@@ -211,6 +214,23 @@ public class Playground {
 		}
 		return dominoPlacer;
 		
+	}
+	
+	
+	public String toString() {
+		String dominoVide="|    |";
+		String plateau="";
+		for(int i=0;i<9;i++) {
+			for(int j=0;j<9;j++) {
+				if(isEmpty(i,j)) {
+				plateau=plateau+dominoVide;
+				}else
+				plateau=plateau+"|  "+playground[i][j].getType()+playground[i][j].getCrown()+"  |";
+				
+			}
+			plateau=plateau+"\n";
+		}
+		return plateau; 
 	}
 	
 	
