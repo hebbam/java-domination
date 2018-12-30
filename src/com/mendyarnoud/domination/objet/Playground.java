@@ -28,6 +28,10 @@ public class Playground {
 		playground[4][4]=tuileChateau;
 	}
 	
+	
+	
+	
+	
 	//Test si la position donnée est vide et qu'il n'y a pas deja une tuile sur la position TRUE = CASE TERRAIN DE JEU VIDE 
 	public boolean isEmpty(int posX, int posY){
 		if(playground[posX][posY]==null) {
@@ -116,19 +120,45 @@ public class Playground {
 	}
 	
 	//Test si au moins 1 terrain est adjacent et du meme type que le dominos
-	public boolean isAdjacent(int posX,int posY, int orientation,Domino domino) {
+	public boolean isAdjacentAndSameType(int posX,int posY, int orientation,Domino domino) {
 		
-		if(orientation==BAS) {
-		if(!isEmpty(posX-1,posY)) {
-			return isSameType(posX-1,posY,domino.getTuile1());
-		}else
-			return false
+		boolean isSameType=false;
+		
+		switch (orientation) {
+		
+		case BAS:
+			if (isSameType(posX-1,posY,domino.getTuile1())||isSameType(posX+1,posY,domino.getTuile1())||isSameType(posX,posY+1,domino.getTuile1()))
+				if (isSameType(posX-1,posY,domino.getTuile2())||isSameType(posX+1,posY,domino.getTuile2())||isSameType(posX,posY-1,domino.getTuile2()))
+					isSameType=true;
+			break;
+			
+		case HAUT:
+			if (isSameType(posX-1,posY,domino.getTuile1())||isSameType(posX+1,posY,domino.getTuile1())||isSameType(posX,posY-1,domino.getTuile1()))
+				if (isSameType(posX-1,posY,domino.getTuile2())||isSameType(posX+1,posY,domino.getTuile2())||isSameType(posX,posY+1,domino.getTuile2()))
+					isSameType=true;
+			
+			break;
+			
+		case DROITE:
+			if (isSameType(posX-1,posY,domino.getTuile1())||isSameType(posX,posY+1,domino.getTuile1())||isSameType(posX,posY-1,domino.getTuile1()))
+				if (isSameType(posX,posY+1,domino.getTuile2())||isSameType(posX+1,posY,domino.getTuile2())||isSameType(posX,posY-1,domino.getTuile2()))
+					isSameType=true;
+			
+			break;
+		
+		case GAUCHE:
+			
+			if (isSameType(posX+1,posY,domino.getTuile1())||isSameType(posX,posY+1,domino.getTuile1())||isSameType(posX,posY-1,domino.getTuile1()))
+				if (isSameType(posX,posY+1,domino.getTuile2())||isSameType(posX-1,posY,domino.getTuile2())||isSameType(posX,posY-1,domino.getTuile2()))
+					isSameType=true;
+			
+			break;
+			
+		
+		
 			
 		}
-		
-			
-		}
-		
+		return isSameType;
 	
 }
 	
