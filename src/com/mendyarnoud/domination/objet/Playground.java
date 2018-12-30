@@ -135,14 +135,17 @@ public class Playground {
 		
 		switch (orientation) {
 		
+		//Les if de chaque case sont trop long pour etre sur une ligne donc j'ai fais deux if ... 
 		case BAS:
 			if (isSameType(posX-1,posY,domino.getTuile1())||isSameType(posX+1,posY,domino.getTuile1())||isSameType(posX,posY+1,domino.getTuile1()))
+				isSameType=true;
 				if (isSameType(posX-1,posY,domino.getTuile2())||isSameType(posX+1,posY,domino.getTuile2())||isSameType(posX,posY-1,domino.getTuile2()))
 					isSameType=true;
 			break;
 			
 		case HAUT:
 			if (isSameType(posX-1,posY,domino.getTuile1())||isSameType(posX+1,posY,domino.getTuile1())||isSameType(posX,posY-1,domino.getTuile1()))
+				isSameType=true;
 				if (isSameType(posX-1,posY,domino.getTuile2())||isSameType(posX+1,posY,domino.getTuile2())||isSameType(posX,posY+1,domino.getTuile2()))
 					isSameType=true;
 			
@@ -150,6 +153,7 @@ public class Playground {
 			
 		case DROITE:
 			if (isSameType(posX-1,posY,domino.getTuile1())||isSameType(posX,posY+1,domino.getTuile1())||isSameType(posX,posY-1,domino.getTuile1()))
+				isSameType=true;
 				if (isSameType(posX,posY+1,domino.getTuile2())||isSameType(posX+1,posY,domino.getTuile2())||isSameType(posX,posY-1,domino.getTuile2()))
 					isSameType=true;
 			
@@ -158,6 +162,7 @@ public class Playground {
 		case GAUCHE:
 			
 			if (isSameType(posX+1,posY,domino.getTuile1())||isSameType(posX,posY+1,domino.getTuile1())||isSameType(posX,posY-1,domino.getTuile1()))
+				isSameType=true;
 				if (isSameType(posX,posY+1,domino.getTuile2())||isSameType(posX-1,posY,domino.getTuile2())||isSameType(posX,posY-1,domino.getTuile2()))
 					isSameType=true;
 			
@@ -173,7 +178,7 @@ public class Playground {
 	
 	
 	//Verifie toutes les conditions et place le domino sur le terrain (TRUE domino bien placé car toutes les conditions sont vrai)
-	public boolean PlacerDomino(int posX,int posY,int orientation, Domino domino) {
+	public boolean placerDomino(int posX,int posY,int orientation, Domino domino) {
 		boolean dominoPlacer=false;
 		if(longueurDuTerrainValid(posX,posY,orientation)&&isAdjacentAndSameType(posX, posY,orientation, domino)&&AucunChevauchement(posX,posY,orientation)) {
 		switch (orientation) {
@@ -222,10 +227,10 @@ public class Playground {
 		String plateau="";
 		for(int i=0;i<9;i++) {
 			for(int j=0;j<9;j++) {
-				if(isEmpty(i,j)) {
+				if(isEmpty(j,i)) {
 				plateau=plateau+dominoVide;
 				}else
-				plateau=plateau+"|  "+playground[i][j].getType()+playground[i][j].getCrown()+"  |";
+				plateau=plateau+"|  "+playground[j][i].getType()+playground[j][i].getCrown()+"  |";
 				
 			}
 			plateau=plateau+"\n";

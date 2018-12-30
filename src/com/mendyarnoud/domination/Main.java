@@ -15,6 +15,11 @@ import com.mendyarnoud.domination.objet.Playground;
 import com.mendyarnoud.domination.utils.CsvReader;
 
 public class Main {
+	
+	private static final int BAS = 0;
+	private static final int HAUT = 1;
+	private static final int GAUCHE = 2;
+	private static final int DROITE = 3;
 
 	public static void main(String[] args) throws IOException {
 		List<Domino> dominos = CsvReader.readCsvFile("dominos.csv");
@@ -38,11 +43,22 @@ public class Main {
 		players.get(1).addKing(king4);*/
 		Playground playground= new Playground();
 		
-		Game game = new Game(dominos, players);
+		//Game game = new Game(dominos, players);
 		
-		game.start();
-		game.playerTurnInit();
-		game.resume();
+		//game.start();
+		//game.playerTurnInit();
+		//game.resume();
+		System.out.println(dominos.toString());
+		System.out.println(playground.toString());
+		playground.placerDomino(4, 5, HAUT, dominos.get(1));
+		playground.placerDomino(5, 4, DROITE, dominos.get(0));
+		playground.placerDomino(3, 4, GAUCHE, dominos.get(2));
+		playground.placerDomino(3, 5, HAUT, dominos.get(2));
+		//Non placer et cest normal
+		playground.placerDomino(5, 5, HAUT, dominos.get(2));
+		
+		
+		System.out.println("Apres placement");
 		System.out.println(playground.toString());
 		
 	}
