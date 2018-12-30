@@ -115,10 +115,10 @@ public class Playground {
 			return false;
 	}
 	
-	//Test si la tuile d'un domino et de meme type que une tuile present sur le terrain
+	//Test si la tuile d'un domino et de meme type que une tuile present sur le terrain ( gestion de la tuile de depart)
 	public boolean isSameType(int posX, int posY, Tuile tuile) {
 		if(!isEmpty(posX,posY)) {
-		if (playground[posX][posY].getType().equals(tuile.getType()))
+		if (playground[posX][posY].getType().equals(tuile.getType())||playground[posX][posY].getType().equals("chateau"))
 			return true;
 		else
 			return false;
@@ -206,6 +206,8 @@ public class Playground {
 			
 				}
 	}
+	
+	
 	
 	
 	
