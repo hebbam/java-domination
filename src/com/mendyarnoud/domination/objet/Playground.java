@@ -126,7 +126,7 @@ public class Playground {
 		return false;
 	}
 	
-	//Test si au moins une tuile est adjacent et du meme type que le dominos
+	//Test si au moins une tuile est adjacent et du meme type que le dominos TRUE = MEME TYPE
 	public boolean isAdjacentAndSameType(int posX,int posY, int orientation,Domino domino) {
 		
 		boolean isSameType=false;
@@ -169,9 +169,10 @@ public class Playground {
 	
 }
 	
-	//Place le domino sur le terrain
-	public void PlacerDomino(int posX,int posY,int orientation, Domino domino) {
-		
+	//Verifie toutes les conditions et place le domino sur le terrain (TRUE domino bien placé car toutes les conditions sont vrai)
+	public boolean PlacerDomino(int posX,int posY,int orientation, Domino domino) {
+		boolean dominoPlacer=false;
+		if(longueurDuTerrainValid(posX,posY,orientation)&&isAdjacentAndSameType(posX, posY,orientation, domino)&&AucunChevauchement(posX,posY,orientation)) {
 		switch (orientation) {
 				
 				case BAS:
@@ -205,7 +206,14 @@ public class Playground {
 		
 			
 				}
+		dominoPlacer=true;
+		
+		}
+		return dominoPlacer;
+		
 	}
+	
+	
 	
 	
 	
