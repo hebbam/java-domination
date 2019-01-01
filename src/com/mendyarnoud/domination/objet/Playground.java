@@ -1,5 +1,7 @@
 package com.mendyarnoud.domination.objet;
 
+import java.util.List;
+
 public class Playground {
 	
 	private Tuile[][] playground= new Tuile[9][9];
@@ -33,7 +35,7 @@ public class Playground {
 	
 	
 	//Test si la position donnée est vide et qu'il n'y a pas deja une tuile sur la position TRUE = CASE TERRAIN DE JEU VIDE 
-	public boolean isEmpty(int posX, int posY){
+	private boolean isEmpty(int posX, int posY){
 		if(playground[posX][posY]==null) {
 			return true;
 		}else
@@ -43,7 +45,7 @@ public class Playground {
 	
 	
 	//On test si le domino ne se superpose pas a un autre dans le plateau de jeu en prenant compte de l'ensemble du domino TRUE = AUCUN CHEVAUCHEMENT
-	public boolean AucunChevauchement(int posX, int posY, int orientation) {
+	private boolean AucunChevauchement(int posX, int posY, int orientation) {
 		
 		boolean chevauchement=false;
 		//On test la premiere tuile
@@ -88,7 +90,7 @@ public class Playground {
 	}
 	
 	//Determine si la longueur du terrain est valide suivant l'orientation (moins ou egale a 5x5)  -- TRUE = PAS DE DEPASSEMENT DE TERRAIN
-	public boolean longueurDuTerrainValid(int posX, int posY, int orientation) {
+	private boolean longueurDuTerrainValid(int posX, int posY, int orientation) {
 		int longueurX=0;
 		int longueurY=0;
 		
@@ -118,7 +120,7 @@ public class Playground {
 	}
 	
 	//Test si la tuile d'un domino et de meme type que une tuile present sur le terrain ( gestion de la tuile de depart)
-	public boolean isSameType(int posX, int posY, Tuile tuile) {
+	private boolean isSameType(int posX, int posY, Tuile tuile) {
 		if(!isEmpty(posX,posY)) {
 		if (playground[posX][posY].getType().equals(tuile.getType())||playground[posX][posY].getType().equals("chateau"))
 			return true;
@@ -129,7 +131,7 @@ public class Playground {
 	}
 	
 	//Test si au moins une tuile est adjacent et du meme type que le dominos TRUE = MEME TYPE
-	public boolean isAdjacentAndSameType(int posX,int posY, int orientation,Domino domino) {
+	private boolean isAdjacentAndSameType(int posX,int posY, int orientation,Domino domino) {
 		
 		boolean isSameType=false;
 		
@@ -253,13 +255,6 @@ public class Playground {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
 	/*
 	 RESTE A FAIRE :
 	 - REGARDER POUR CHAQUE TUILE S IL Y A DES TUILES EN CONTACT 
@@ -270,6 +265,12 @@ public class Playground {
 	
 	ATTENTION : c'est normal que le projet se compile pas / je n'ai pas modifier le main et je n'ai encore RIEN tester. DONC IL FAUT TESTER AU DEBBUG CHAQUE METHODE 
 	 */
+	
+	//*******Calcul score terrain*******//
+
+	
+	
+	
 	
 }
 
