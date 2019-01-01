@@ -235,6 +235,7 @@ public class Playground {
 				plateau+=dominoVide;
 				}else {
 				String domino= "| "+playground[j][i].getType()+" "+playground[j][i].getCrown();
+				// Permet de faire des colonne et ligne rectiligne, il y a toujours 11 caractere dans chaque colonne
 				while(domino.length()!=11) {
 					domino+=" ";
 				}
