@@ -225,7 +225,7 @@ public class Playground {
 	public String toString() {
 		String dominoVide="|    |";
 		String plateau="";
-		for(int i=0;i<9;i++) {
+		for(int i=8;i>=0;i--) {
 			for(int j=0;j<9;j++) {
 				if(isEmpty(j,i)) {
 				plateau=plateau+dominoVide;
