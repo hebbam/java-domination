@@ -55,7 +55,9 @@ public class Main {
 		playground.placerDomino(3, 4, GAUCHE, dominos.get(2));
 		playground.placerDomino(3, 5, HAUT, dominos.get(2));
 		//Non placer et cest normal
-		playground.placerDomino(5, 5, HAUT, dominos.get(2));
+		//playground.placerDomino(5, 5, HAUT, dominos.get(2));
+		playground.placerDomino(5, 5, HAUT, dominos.get(47));
+		playground.placerDomino(6, 6, DROITE, dominos.get(44));
 		
 		
 		System.out.println("Apres placement");

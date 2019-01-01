@@ -223,7 +223,7 @@ public class Playground {
 	
 	
 	public String toString() {
-		String dominoVide="|          |"; //11
+		String dominoVide="|            |"; //13
 		String plateau="";
 		
 		for(int i=8;i>=0;i--) {
@@ -235,8 +235,8 @@ public class Playground {
 				plateau+=dominoVide;
 				}else {
 				String domino= "| "+playground[j][i].getType()+" "+playground[j][i].getCrown();
-				// Permet de faire des colonne et ligne rectiligne, il y a toujours 11 caractere dans chaque colonne
-				while(domino.length()!=11) {
+				// Permet de faire des colonne et ligne rectiligne, il y a toujours 13 caractere dans chaque colonne
+				while(domino.length()<13) {
 					domino+=" ";
 				}
 				plateau+=domino+"|";
@@ -246,7 +246,7 @@ public class Playground {
 			
 		}
 		}
-		plateau+="\n |     0    ||     1    ||     2    ||     3    ||     4    ||    5     ||    6     ||    7     ||     8    |"; //axe des abscisses
+		plateau+="\n |     0      ||     1      ||     2      ||     3      ||     4      ||     5      ||     6      ||     7      ||      8     |"; //axe des abscisses
 		return plateau; 
 
 	}
