@@ -223,19 +223,31 @@ public class Playground {
 	
 	
 	public String toString() {
-		String dominoVide="|    |";
+		String dominoVide="|          |"; //11
 		String plateau="";
+		
 		for(int i=8;i>=0;i--) {
+			
+			plateau=plateau+"\n"+i; //Affichage cordonnée + retour ligne
+			
 			for(int j=0;j<9;j++) {
 				if(isEmpty(j,i)) {
-				plateau=plateau+dominoVide;
-				}else
-				plateau=plateau+"|  "+playground[j][i].getType()+playground[j][i].getCrown()+"  |";
+				plateau+=dominoVide;
+				}else {
+				String domino= "| "+playground[j][i].getType()+" "+playground[j][i].getCrown();
+				while(domino.length()!=11) {
+					domino+=" ";
+				}
+				plateau+=domino+"|";
+				
 				
 			}
-			plateau=plateau+"\n";
+			
 		}
+		}
+		plateau+="\n |     0    ||     1    ||     2    ||     3    ||     4    ||    5     ||    6     ||    7     ||     8    |"; //axe des abscisses
 		return plateau; 
+
 	}
 	
 	
