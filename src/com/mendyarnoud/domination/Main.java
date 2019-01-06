@@ -50,18 +50,29 @@ public class Main {
 		//game.resume();
 		System.out.println(dominos.toString());
 		System.out.println(playground.toString());
-		playground.placerDomino(4, 5, HAUT, dominos.get(1));
-		playground.placerDomino(5, 4, DROITE, dominos.get(0));
+		
+		//playground.placerDomino(4, 5, HAUT, dominos.get(1));
+		
+		//Au lieu de mettre des int mettre des Scan int pour l utilisateur
+		
+		System.out.println(playground.toString());
 		playground.placerDomino(3, 4, GAUCHE, dominos.get(2));
-		playground.placerDomino(3, 5, HAUT, dominos.get(2));
-		//Non placer et cest normal
-		//playground.placerDomino(5, 5, HAUT, dominos.get(2));
-		playground.placerDomino(5, 5, HAUT, dominos.get(47));
-		playground.placerDomino(6, 6, DROITE, dominos.get(44));
+		playground.placerDomino(4, 3, BAS, dominos.get(47));
+		playground.placerDomino(6, 2, GAUCHE, dominos.get(45));
+		//playground.placerDomino(6, 3, GAUCHE, dominos.get(46));
+		playground.placerDomino(4, 5, HAUT, dominos.get(20));
+		playground.placerDomino(5 ,5 , DROITE, dominos.get(0));
 		
 		
 		System.out.println("Apres placement");
 		System.out.println(playground.toString());
+		
+		
+		System.out.println("Apres placement final");
+		System.out.println(playground.toString());
+		System.out.println(playground.CalculPoint());
+		playground.updateSizePlayground();
+		System.out.println("fini");
 		
 	}
 
