@@ -31,15 +31,15 @@ public class MainConsole {
 		Game game = Game.getGame(dominos, players);
 		GameManager gameManager = new GameManager(game);
 		System.out.println("Le jeu ");
-		System.out.println(game);
+		//System.out.println(game);
 		System.out.println("=======================Pick======================");
 		gameManager.pick();
-		System.out.println(game);
+		//System.out.println(game);
 		System.out.println("=======================Turn======================");
 		Player currentPlayer = gameManager.turn();
 		Domino domino = game.getPickedDominos().get(0);
 		gameManager.selectDomino(currentPlayer, domino);
-		System.out.println(game);
+		//System.out.println(game);
 		System.out.println("=======================Placer======================");
 		gameManager.placeDomino(3, 4, GAUCHE, domino);
 		currentPlayer = gameManager.turn();
@@ -54,7 +54,18 @@ public class MainConsole {
 		domino = game.getPickedDominos().get(0);
 		gameManager.selectDomino(currentPlayer, domino);
 		gameManager.placeDomino(5, 5, DROITE, domino);
-		gameManager.showBoard();
+		System.out.println("=======================MainTurn======================");
+		System.out.println(game);
+		currentPlayer = gameManager.mainTurn();
+		System.out.println(currentPlayer);
+		currentPlayer = gameManager.mainTurn();
+		System.out.println(currentPlayer);
+		
+		/*		domino = game.getPickedDominos().get(0);
+		gameManager.selectDomino(currentPlayer, domino);
+		gameManager.placeDomino(3, 4, BAS, domino);*/
+		//gameManager.showBoard();
+		//System.out.println(game);
 	}
 
 }

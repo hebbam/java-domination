@@ -51,6 +51,9 @@ public class GameManager {
 			// récup kings de tous les joueurs
 			kings.addAll(player.getKings());
 		}
+		if(kings.isEmpty()) {
+			return null;
+		}
 		Collections.shuffle(kings);
 		King king = kings.get(0);
 		String kingColor = king.getColor();
@@ -66,7 +69,7 @@ public class GameManager {
 	}
 
 	public void selectDomino(Player player, Domino domino) {
-		game.getPlayedDominos().add(domino);
+		game.getPrewiewDominosTurn().add(domino);
 		game.getPickedDominos().remove(domino);
 		player.getSelectedDominos().add(domino);
 	}
@@ -75,6 +78,7 @@ public class GameManager {
 		System.out.println("Placement des dominos");
 		playground.placerDomino(x, y, orientation, domino);
 		playground.updateSizePlayground();
+		game.getPlacedDominos().add(domino);
 
 	}
 	
@@ -86,8 +90,20 @@ public class GameManager {
 	}
 
 	// le joueur place son domino = méthode placerDomino();
-	public void mainTurn() {
-		// while il y a de dominos en jeu
+	public Player mainTurn() {
+		List <Domino> prewiewDominosTurn = game.getPrewiewDominosTurn();
+		if(prewiewDominosTurn.isEmpty()) {
+			return  null;
+		}
+		Collections.sort(prewiewDominosTurn);
+		Domino smallestDomino = prewiewDominosTurn.get(0);
+		for(Player player : game.getPlayers()) {
+			if(player.getSelectedDominos().contains(smallestDomino)) {
+				prewiewDominosTurn.remove(smallestDomino);
+				return player;
+			}
+		}
+		return null;
 		// recupere les dominos placés de chaque joueur
 		// pick();
 		// le joueur qui a choisi le domino avec le plus petit numéro commence le tour

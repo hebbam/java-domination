@@ -16,14 +16,14 @@ public class Game {
 
 	private List<Player> players;
 	private List<Domino> dominosBank = new ArrayList<>();
-	private List<Domino> playedDominos = new ArrayList<>();
+	private List<Domino> prewiewDominosTurn = new ArrayList<>(); 
 	private List<Domino> pickedDominos = new ArrayList<>();
+	private List<Domino> placedDominos = new ArrayList<>();
 
 	private List<Domino> deck = new ArrayList<Domino>();
 	private static final int NUMBER_DOMINOS_2_PLAYERS = 24;
 	private static final int NUMBER_DOMINOS_3_PLAYERS = 36;
 
-	Scanner scan = new Scanner(System.in);
 
 	private Game(List<Domino> dominos, List<Player> players) {
 		this.players = players;
@@ -161,12 +161,13 @@ public class Game {
 		this.pickedDominos = pickedDominos;
 	}
 
-	public List<Domino> getPlayedDominos() {
-		return playedDominos;
+
+	public List<Domino> getPrewiewDominosTurn() {
+		return prewiewDominosTurn;
 	}
 
-	public void setPlayedDominos(List<Domino> playedDominos) {
-		this.playedDominos = playedDominos;
+	public List<Domino> getPlacedDominos() {
+		return placedDominos;
 	}
 
 	@Override
@@ -174,11 +175,13 @@ public class Game {
 		String result = "La structure du jeu est : \n";
 		String players = "Players = " + this.players + "\nNombre de joueurs = " + this.players.size() + "\n";
 		String dominosBank = "Banque = " + DominoUtil.display(this.dominosBank) + "\nDominos restants = " + this.dominosBank.size() + "\n";
-		String playedDominos = "Dominos joués = " + DominoUtil.display(this.playedDominos) + "\nNombre de dominos sur le plateau = "
-				+ this.playedDominos.size() + "\n";
+		String prewiewDominosTurn = "Dominos du tour précédent " + DominoUtil.display(this.prewiewDominosTurn) + "\nNombre de dominos du tour précédent = "
+				+ this.prewiewDominosTurn.size() + "\n";
+		String placedDominosOnBoard = "Dominos joués = " + DominoUtil.display(this.placedDominos) + "\nNombre de dominos sur le plateau = "
+				+ this.placedDominos.size() + "\n";
 		String pickedDominos = "Dominos piochés = " + DominoUtil.display(this.pickedDominos) + "\nNombre de dominos piochés restants = "
 				+ this.pickedDominos.size() + "\n";
-		return result + players + dominosBank + pickedDominos + playedDominos;
+		return result + players + dominosBank + pickedDominos + prewiewDominosTurn + placedDominosOnBoard;
 	}
 
 }
